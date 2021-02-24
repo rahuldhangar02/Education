@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" th:replace="base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+
+</head>
+<body>
+ <section> 
+              <div class="row">
+              <div class="col-md-4 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Add Class Info</h4>
+                 <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert alert-dismissible" role="alert">
+                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+<h5 class="text-center" th:text="${session.message.content}"></h5>
+<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+</div>
+                  <form class="forms-sample" th:action="@{/addclass}" method="post" th:object="${addcls}">
+                
+                     <div class="form-group">
+                      <label for="exampleInputUsername1">Class Id</label>
+                      <input type="text" name="id" th:value="${addcls.id}" class="form-control" readonly="readonly"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Class Name</label>
+                      <input type="text" name="clsname" th:value="${addcls.clsname}" class="form-control" id="exampleInputUsername1" placeholder="Enter Class Name" required="required">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                    
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- Start Second Form -->
+      
+            <!--End of Second form-->
+            </div>
+ </section>
+ 
+</body>
+
+</html>
+
